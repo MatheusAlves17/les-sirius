@@ -1,0 +1,48 @@
+nav{
+
+  width: 100vw;
+  height: 6.25rem;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #F8F8F8;
+  box-shadow: 0px 4px 12px rgba(30, 30, 30, 0.25);
+
+}
+
+.logotipo{
+  width: 4.375rem;
+  height: 4.375rem;
+
+  margin-left: 3.75rem;
+
+}
+
+.nav-list{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-right: 3.75rem;
+}
+
+.nav-list-item{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 0 30px;
+
+  cursor: pointer;
+}
+
+.nav-item-link{
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  color: #1e1e1e;
+}
