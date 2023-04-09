@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/auth.service';
 
 @Component({
@@ -15,7 +16,9 @@ export class SignUpComponent {
 
   constructor(
     private fb: FormBuilder,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private router: Router,
+
   ){
 
   }
@@ -45,10 +48,10 @@ export class SignUpComponent {
 
   onSignUp(){
     let { value } = this.signUpForm;
+
     console.log(`dadossss: ${this.signUpForm}`);
 
-    console.log();
-
+    this.router.navigate(['/profile/123'])
     this.auth.signUp(this.signUpForm.value).subscribe(result => {
       console.log(`Chegou: ${result}`);
     })
@@ -58,6 +61,7 @@ export class SignUpComponent {
   onSignIn(){
     let { value, validator } = this.signInForm;
     console.log(`dados: ${this.signInForm}`);
+    this.router.navigate(['/profile/123'])
 
   }
 

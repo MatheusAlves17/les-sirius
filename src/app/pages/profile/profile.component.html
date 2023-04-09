@@ -1,4 +1,50 @@
-<div style="display: flex;">
+<div style="display: flex; overflow: hidden;">
   <app-sidebar></app-sidebar>
-  <p>profile works!</p>
+    <img src="https://pps.whatsapp.net/v/t61.24694-24/103198079_185564256145556_4098820761294741391_n.jpg?ccb=11-4&oh=01_AdQOy3eu_NMYdZNAmNLGj6imPP7PF3_IY3Ion_TmbByGHw&oe=64403AB9" alt="" class="avatar">
+
+    <div class="information">
+      <form action="" [formGroup]="personalInformation" (ngSubmit)="onUpdate" #formDir="ngForm">
+        <div class="input">
+          <input
+          formControlName="cpf"
+          placeholder="CPF"
+          type="text"
+          name="cpf"
+          id="cpf"
+          required
+          />
+        </div>
+        <div class="input">
+          <input
+          formControlName="name"
+          placeholder="Nome"
+          type="text"
+          name="name"
+          id="name"
+          required
+          />
+        </div>
+        <div class="input">
+          <input
+          formControlName="telphone"
+          placeholder="Telefone"
+          type="tel"
+          name="telphone"
+          id="telphone"
+          required
+          />
+        </div>
+        <div class="input">
+          <input
+          formControlName="email"
+          placeholder="E-mail"
+          type="email"
+          name="email"
+          id="email"
+          required
+          />
+        </div>
+        <input type="submit" value="Salvar" class="button">
+      </form>
+    </div>
 </div>

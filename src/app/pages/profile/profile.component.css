@@ -1,0 +1,13 @@
+.avatar{
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+
+  display: block;
+  margin: auto;
+}
+
+.information{
+  display: block;
+  margin: auto;
+}
