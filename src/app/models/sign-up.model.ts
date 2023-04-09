@@ -5,3 +5,7 @@ export class SignUp {
   email!: string;
   password!: string;
 }
+export class SignIn {
+  email!: string;
+  password!: string;
+}

@@ -1,42 +1,104 @@
-<div mat-dialog-content>
-<h1>
-  Cadastre-se!
-</h1>
-  <form [formGroup]="signUpForm">
-    <div class="input">
-      <input
-      formControlName="name"
-      placeholder="Nome completo"
-      type="text"
-      name="name"
-      id="name"
-      required
+<div *ngIf="!onSignInForm" class="center">
+  <div mat-dialog-content>
+      <h1>
+    Cadastre-se!
+    </h1>
+    <form [formGroup]="signUpForm"  (ngSubmit)="onSignUp()" #formDir="ngForm">
+      <div class="input">
+        <input
+        formControlName="name"
+        placeholder="Nome completo"
+        type="text"
+        name="name"
+        id="name"
+        required
+        />
+      </div>
+      <div class="error" *ngIf="name.invalid && formDir.submitted">
+        <p class="message-error" *ngIf="name.errors?.['required']">O nome é obrigatório</p>
+      </div>
+      <div class="input">
+        <input
+        formControlName="cpf"
+        placeholder="CPF"
+        type="text"
+        maxlength="11"
+        name="cpf"
+        id="cpf"
+        required
+        />
+      </div>
+      <div class="error" *ngIf="cpf.invalid && formDir.submitted">
+        <p class="message-error" *ngIf="cpf.errors?.['required']">O CPF é obrigatório</p>
+      </div>
+      <div class="input">
+        <input
+        formControlName="emailSignUp"
+        placeholder="E-mail"
+        type="email"
+        name="email"
+        id="email"
+        required
+        />
+      </div>
+      <div class="error" *ngIf="emailSignUp.invalid && formDir.submitted">
+        <p class="message-error" *ngIf="emailSignUp.errors?.['required']">O e-mail é obrigatório</p>
+        <p class="message-error" *ngIf="emailSignUp.errors?.['email']">Informe um email válido</p>
+      </div>
+      <div class="input">
+        <input
+        formControlName="passwordSignUp"
+        placeholder="Senha"
+        type="password"
+        name="password"
+        id="password"
+        required
+        />
+      </div>
+      <div class="error" *ngIf="passwordSignUp.invalid && formDir.submitted">
+        <p class="message-error" *ngIf="passwordSignUp.errors?.['required']">A senha é obrigatória</p>
+        <!-- <p class="message-error" *ngIf="password.errors?.['min']">A senha precisa, no mínimo, 8 caracteres</p> -->
+      </div>
+      <div class="input">
+        <input
+        formControlName="telphone"
+        placeholder="Telefone"
+        type="tel"
+        name="telphone"
+        id="telphone"
+        required
+        />
+      </div>
+      <div class="error" *ngIf="telphone.invalid && formDir.submitted">
+        <p class="message-error" *ngIf="telphone.errors?.['required']">Número de telefone é obrigatório</p>
+      </div>
+      <input type="submit" value="Cadastrar" class="button">
+    </form>
+  </div>
+  <p class="legend">ou</p>
+  <p class="legend" (click)="showForm()" style="cursor: pointer;">Já tem conta? Faça login!</p>
+</div>
+<div *ngIf="onSignInForm">
+  <div mat-dialog-content>
+    <h1>Faça Login</h1>
+    <form [formGroup]="signInForm" (ngSubmit)="onSignIn()" #formDir="ngForm">
+      <div class="input">
+        <input
+        formControlName="emailSignIn"
+        placeholder="E-mail"
+        type="email"
+        name="email"
+        id="email"
+        required
       />
+    </div>
+    <div class="error" *ngIf="emailSignIn.invalid && formDir.submitted">
+      <p class="message-error" *ngIf="emailSignIn.errors?.['required']">O e-mail é obrigatório</p>
+      <p class="message-error" *ngIf="emailSignIn.errors?.['email']">Informe um email válido</p>
     </div>
     <div class="input">
       <input
-      formControlName="cpf"
-      placeholder="CPF"
-      type="text"
-      maxlength="11"
-      name="cpf"
-      id="cpf"
-      required
-      />
-    </div>
-    <div class="input">
-      <input
-      formControlName="email"
-      placeholder="E-mail"
-      type="email"
-      name="email"
-      id="email"
-      required
-      />
-    </div>
-    <div class="input">
-      <input
-      formControlName="password"
+      formControlName="passwordSignIn"
       placeholder="Senha"
       type="password"
       name="password"
@@ -44,18 +106,12 @@
       required
       />
     </div>
-    <div class="input">
-      <input
-      formControlName="telphone"
-      placeholder="Telefone"
-      type="tel"
-      name="telphone"
-      id="telphone"
-      required
-      />
+    <div class="error" *ngIf="passwordSignIn.invalid && formDir.submitted">
+      <p class="message-error" *ngIf="passwordSignIn.errors?.['required']">A senha é obrigatória</p>
     </div>
+    <input type="submit" value="Entrar" class="button">
   </form>
+  <!-- <button (click)="onSignUp()">Entrar</button> -->
+  <p class="legend">ou</p>
+  <p class="legend" (click)="showForm()" style="cursor: pointer;">Não tem conta? Cadastre-se!</p>
 </div>
-<button (click)="onSignUp()">Cadastrar</button>
-<p class="legend">ou</p>
-<p class="legend">Já tem conta? Faça login!</p>
