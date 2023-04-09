@@ -1,1 +1,61 @@
-<p>sign-up works!</p>
+<div mat-dialog-content>
+<h1>
+  Cadastre-se!
+</h1>
+  <form [formGroup]="signUpForm">
+    <div class="input">
+      <input
+      formControlName="name"
+      placeholder="Nome completo"
+      type="text"
+      name="name"
+      id="name"
+      required
+      />
+    </div>
+    <div class="input">
+      <input
+      formControlName="cpf"
+      placeholder="CPF"
+      type="text"
+      maxlength="11"
+      name="cpf"
+      id="cpf"
+      required
+      />
+    </div>
+    <div class="input">
+      <input
+      formControlName="email"
+      placeholder="E-mail"
+      type="email"
+      name="email"
+      id="email"
+      required
+      />
+    </div>
+    <div class="input">
+      <input
+      formControlName="password"
+      placeholder="Senha"
+      type="password"
+      name="password"
+      id="password"
+      required
+      />
+    </div>
+    <div class="input">
+      <input
+      formControlName="telphone"
+      placeholder="Telefone"
+      type="tel"
+      name="telphone"
+      id="telphone"
+      required
+      />
+    </div>
+  </form>
+</div>
+<button (click)="onSignUp()">Cadastrar</button>
+<p class="legend">ou</p>
+<p class="legend">Já tem conta? Faça login!</p>

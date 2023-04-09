@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { SignUpComponent } from '../sign-up/sign-up.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -9,19 +10,20 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  signUpForm: FormGroup | undefined;
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit():void{
-
-
   }
 
   openSingUp() {
-    const dialogRef = this.dialog.open(SignUpComponent);
-
+    const dialogRef = this.dialog.open(SignUpComponent, {
+      minWidth: '400px'
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
