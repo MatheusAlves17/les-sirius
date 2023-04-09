@@ -26,6 +26,7 @@
         name="cpf"
         id="cpf"
         required
+        mask="999.999.999-99"
         />
       </div>
       <div class="error" *ngIf="cpf.invalid && formDir.submitted">
@@ -66,6 +67,7 @@
         type="tel"
         name="telphone"
         id="telphone"
+        mask="(99) 99999-9999"
         required
         />
       </div>

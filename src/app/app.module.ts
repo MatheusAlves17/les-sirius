@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+// import { NgxMaskModule } from 'ngx-mask';
+
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,18 +18,19 @@ import {MatInputModule} from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
-
-
-
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    SignUpComponent
+    SignUpComponent,
+    SidebarComponent,
+    ProfileComponent,
   ],
   imports: [
+    // NgxMaskModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -37,8 +40,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatNativeDateModule,
     MatInputModule,
     RouterModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
