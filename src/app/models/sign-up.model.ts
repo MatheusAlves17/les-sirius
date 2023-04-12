@@ -6,6 +6,7 @@ export class SignUp {
   password!: string;
 }
 export class SignIn {
-  email!: string;
-  password!: string;
+  email!:  string | null | undefined;
+  password!:  string | null | undefined;
+  remeberMe?: boolean = true;
 }

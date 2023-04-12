@@ -4,14 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { SignUp } from '../models/sign-up.model';
+import { SignIn, SignUp } from '../models/sign-up.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  apiUrl = 'http://localhost:3333';
+  apiUrl = 'http://142.93.6.205:4001/user/session';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -25,5 +25,10 @@ export class AuthenticationService {
 
   public signUp(user: SignUp){
     return this.http.post(`${this.apiUrl}/user`,user)
+  }
+  public signIn(user: any){
+    console.log(`user: ${user}`);
+
+    return this.http.post(`${this.apiUrl}`,user)
   }
 }

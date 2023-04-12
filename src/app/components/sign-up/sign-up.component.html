@@ -86,7 +86,7 @@
     <form [formGroup]="signInForm" (ngSubmit)="onSignIn()" #formDir="ngForm">
       <div class="input">
         <input
-        formControlName="emailSignIn"
+        formControlName="email"
         placeholder="E-mail"
         type="email"
         name="email"
@@ -94,13 +94,13 @@
         required
       />
     </div>
-    <div class="error" *ngIf="emailSignIn.invalid && formDir.submitted">
+    <!-- <div class="error" *ngIf="emailSignIn.invalid && formDir.submitted">
       <p class="message-error" *ngIf="emailSignIn.errors?.['required']">O e-mail é obrigatório</p>
       <p class="message-error" *ngIf="emailSignIn.errors?.['email']">Informe um email válido</p>
-    </div>
+    </div> -->
     <div class="input">
       <input
-      formControlName="passwordSignIn"
+      formControlName="password"
       placeholder="Senha"
       type="password"
       name="password"
@@ -108,12 +108,12 @@
       required
       />
     </div>
-    <div class="error" *ngIf="passwordSignIn.invalid && formDir.submitted">
+    <!-- <div class="error" *ngIf="passwordSignIn.invalid && formDir.submitted">
       <p class="message-error" *ngIf="passwordSignIn.errors?.['required']">A senha é obrigatória</p>
-    </div>
+    </div> -->
     <input type="submit" value="Entrar" class="button">
   </form>
-  <!-- <button (click)="onSignUp()">Entrar</button> -->
+  <!-- <button (click)="onSignIn()">Entrar</button> -->
   <p class="legend">ou</p>
   <p class="legend" (click)="showForm()" style="cursor: pointer;">Não tem conta? Cadastre-se!</p>
 </div>

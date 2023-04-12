@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SignIn } from 'src/app/models/sign-up.model';
 import { AuthenticationService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,8 +12,18 @@ import { AuthenticationService } from 'src/app/services/auth.service';
 export class SignUpComponent {
 
   signUpForm!: FormGroup;
-  signInForm!: FormGroup;
+  // signInForm!: FormGroup;
   onSignInForm: boolean = true;
+
+  signInForm = this.fb.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+  })
+
+  signInDate: SignIn = {
+    email: '',
+    password: '',
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -31,10 +42,10 @@ export class SignUpComponent {
       telphone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
     });
 
-    this.signInForm =  new FormGroup({
-      emailSignIn: new FormControl('', [Validators.email, Validators.required]),
-      passwordSignIn: new FormControl('', [Validators.minLength(8), Validators.required]),
-    })
+    // this.signInForm =  new FormGroup({
+    //   emailSignIn: new FormControl('', [Validators.email, Validators.required]),
+    //   passwordSignIn: new FormControl('', [Validators.minLength(8), Validators.required]),
+    // })
   }
 
   showForm(){
@@ -58,10 +69,26 @@ export class SignUpComponent {
   }
 
 
-  onSignIn(){
-    let { value, validator } = this.signInForm;
-    console.log(`dados: ${this.signInForm}`);
-    this.router.navigate(['/profile/123'])
+  async onSignIn(){
+
+    const { valid, value } = this.signInForm;
+
+    // console.log(`value: ${value}`);
+
+    if( valid ) {
+      console.log(`value: ${value}`);
+      console.log('valido');
+      this.signInDate.email = value.email;
+      this.signInDate.password = value.password;
+
+      await this.auth.signIn(this.signInDate).subscribe((data) => {
+        this.router.navigate(['/profile/123'])
+        localStorage.setItem('login', JSON.stringify(data))
+        console.log(`login: ${data}`);
+
+      })
+
+    }
 
   }
 
