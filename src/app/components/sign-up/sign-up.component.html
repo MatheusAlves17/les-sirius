@@ -19,7 +19,7 @@
       </div>
       <div class="input">
         <input
-        formControlName="cpf"
+        formControlName="CPF"
         placeholder="CPF"
         type="text"
         maxlength="11"
@@ -34,7 +34,7 @@
       </div>
       <div class="input">
         <input
-        formControlName="emailSignUp"
+        formControlName="email"
         placeholder="E-mail"
         type="email"
         name="email"
@@ -42,13 +42,13 @@
         required
         />
       </div>
-      <div class="error" *ngIf="emailSignUp.invalid && formDir.submitted">
-        <p class="message-error" *ngIf="emailSignUp.errors?.['required']">O e-mail é obrigatório</p>
-        <p class="message-error" *ngIf="emailSignUp.errors?.['email']">Informe um email válido</p>
-      </div>
+      <!-- <div class="error" *ngIf="email.invalid && formDir.submitted">
+        <p class="message-error" *ngIf="email.errors?.['required']">O e-mail é obrigatório</p>
+        <p class="message-error" *ngIf="email.errors?.['email']">Informe um email válido</p>
+      </div> -->
       <div class="input">
         <input
-        formControlName="passwordSignUp"
+        formControlName="password"
         placeholder="Senha"
         type="password"
         name="password"
@@ -56,10 +56,10 @@
         required
         />
       </div>
-      <div class="error" *ngIf="passwordSignUp.invalid && formDir.submitted">
-        <p class="message-error" *ngIf="passwordSignUp.errors?.['required']">A senha é obrigatória</p>
+      <!-- <div class="error" *ngIf="passwordSignUp.invalid && formDir.submitted">
+        <p class="message-error" *ngIf="passwordSignUp.errors?.['required']">A senha é obrigatória</p> -->
         <!-- <p class="message-error" *ngIf="password.errors?.['min']">A senha precisa, no mínimo, 8 caracteres</p> -->
-      </div>
+      <!-- </div> -->
       <div class="input">
         <input
         formControlName="telphone"

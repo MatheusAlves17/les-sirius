@@ -24,7 +24,7 @@ export class AuthenticationService {
   ) { }
 
   public signUp(user: SignUp){
-    return this.http.post(`${this.apiUrl}/user`,user)
+    return this.http.post(`http://142.93.6.205:4001/user/`,user)
   }
   public signIn(user: any){
     console.log(`user: ${user}`);
@@ -32,3 +32,4 @@ export class AuthenticationService {
     return this.http.post(`${this.apiUrl}`,user)
   }
 }
+

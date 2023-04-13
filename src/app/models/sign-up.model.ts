@@ -1,9 +1,9 @@
 export class SignUp {
-  name!:  string;
-  cpf!: string;
-  telphone!: string;
-  email!: string;
-  password!: string;
+  name!:  string | null | undefined;
+  CPF!: string | null | undefined;
+  phone!: string | null | undefined;
+  email!: string | null | undefined;
+  password!: string | null | undefined;
 }
 export class SignIn {
   email!:  string | null | undefined;

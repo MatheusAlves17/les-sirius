@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SignIn } from 'src/app/models/sign-up.model';
+import { SignIn, SignUp } from 'src/app/models/sign-up.model';
 import { AuthenticationService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AuthenticationService } from 'src/app/services/auth.service';
 })
 export class SignUpComponent {
 
-  signUpForm!: FormGroup;
+  // signUpForm!: FormGroup;
   // signInForm!: FormGroup;
   onSignInForm: boolean = true;
 
@@ -20,7 +20,23 @@ export class SignUpComponent {
     password: ['', Validators.required],
   })
 
-  signInDate: SignIn = {
+  signInData: SignIn = {
+    email: '',
+    password: '',
+  }
+
+  signUpForm = this.fb.group({
+    name: ['', Validators.required],
+    CPF: ['', Validators.required],
+    phone: ['', Validators.required],
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+  })
+
+  signUpData: SignUp = {
+    name: '',
+    CPF: '',
+    phone: '',
     email: '',
     password: '',
   }
@@ -34,13 +50,13 @@ export class SignUpComponent {
 
   }
   ngOnInit():void{
-    this.signUpForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      cpf: new FormControl('', [Validators.minLength(11), Validators.maxLength(11), Validators.required]),
-      emailSignUp: new FormControl('', [Validators.email, Validators.required]),
-      passwordSignUp: new FormControl('', [Validators.minLength(8), Validators.required]),
-      telphone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
-    });
+    // this.signUpForm = new FormGroup({
+    //   name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    //   cpf: new FormControl('', [Validators.minLength(11), Validators.maxLength(11), Validators.required]),
+    //   emailSignUp: new FormControl('', [Validators.email, Validators.required]),
+    //   passwordSignUp: new FormControl('', [Validators.minLength(8), Validators.required]),
+    //   telphone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
+    // });
 
     // this.signInForm =  new FormGroup({
     //   emailSignIn: new FormControl('', [Validators.email, Validators.required]),
@@ -58,13 +74,19 @@ export class SignUpComponent {
   }
 
   onSignUp(){
-    let { value } = this.signUpForm;
+    let { value, valid } = this.signUpForm;
 
-    console.log(`dadossss: ${this.signUpForm}`);
+    if( valid ){
+      this.signUpData.name = value.name;
+      this.signUpData.CPF = value.CPF;
+      this.signUpData.phone = value.phone;
+      this.signUpData.email = value.email;
+      this.signUpData.password = value.password;
+    }
 
-    this.router.navigate(['/profile/123'])
-    this.auth.signUp(this.signUpForm.value).subscribe(result => {
+    this.auth.signUp(this.signUpData).subscribe(result => {
       console.log(`Chegou: ${result}`);
+      this.router.navigate(['/profile/123'])
     })
   }
 
@@ -73,21 +95,17 @@ export class SignUpComponent {
 
     const { valid, value } = this.signInForm;
 
-    // console.log(`value: ${value}`);
-
     if( valid ) {
-      console.log(`value: ${value}`);
-      console.log('valido');
-      this.signInDate.email = value.email;
-      this.signInDate.password = value.password;
 
-      await this.auth.signIn(this.signInDate).subscribe((data) => {
-        this.router.navigate(['/profile/123'])
+      this.signInData.email = value.email;
+      this.signInData.password = value.password;
+
+      await this.auth.signIn(this.signInData).subscribe((data: any) => {
         localStorage.setItem('login', JSON.stringify(data))
         console.log(`login: ${data}`);
+        this.router.navigate(['/profile/123'])
 
       })
-
     }
 
   }

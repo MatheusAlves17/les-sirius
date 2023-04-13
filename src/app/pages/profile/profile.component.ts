@@ -12,12 +12,20 @@ export class ProfileComponent {
 
   constructor(){}
   ngOnInit():void{
+
+    let data: string | null = localStorage.getItem('login')
+    console.log(`DATA: ${data}`);
+
+    let login = data ? JSON.parse(data) : null;
+    console.log(`LOGIN: ${login}`);
+
+
     this.personalInformation = new FormGroup({
-      id: new FormControl('1230'),
-      name: new FormControl('Eduardo'),
-      cpf: new FormControl('123.456.789-89'),
-      email: new FormControl('edu.aparecido@email.com'),
-      telphone: new FormControl('(11) 94002-8922'),
+      id: new FormControl(login.user.id),
+      name: new FormControl(login.user.name),
+      cpf: new FormControl(login.user.CPF),
+      email: new FormControl(login.user.email),
+      telphone: new FormControl(login.user.telphone),
 
     })
   }

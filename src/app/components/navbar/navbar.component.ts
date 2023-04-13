@@ -11,6 +11,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class NavbarComponent {
   signUpForm: FormGroup | undefined;
+  isAuthenticate: boolean = false;
+  user!: any;
+  avatarDefault: string = '';
 
   constructor(
     public dialog: MatDialog,
@@ -18,6 +21,14 @@ export class NavbarComponent {
   ) {}
 
   ngOnInit():void{
+    let storage: string | null = localStorage.getItem('login')
+
+    this.user = storage ? JSON.parse(storage) : null
+    this.user = this.user.user
+
+    this.user ? this.isAuthenticate = true : this.isAuthenticate = false
+
+    this.avatarDefault = this.user.name[0]
   }
 
   openSingUp() {
