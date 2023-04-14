@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 
 @Component({
@@ -17,18 +20,24 @@ export class NavbarComponent {
 
   constructor(
     public dialog: MatDialog,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit():void{
     let storage: string | null = localStorage.getItem('login')
 
-    this.user = storage ? JSON.parse(storage) : null
-    this.user = this.user.user
+    let userStorage = storage ? JSON.parse(storage) : null
+
+    this.user = userStorage ? userStorage.user : null
 
     this.user ? this.isAuthenticate = true : this.isAuthenticate = false
 
-    this.avatarDefault = this.user.name[0]
+    if(this.user){
+      this.avatarDefault = this.user.name[0]
+
+    }
   }
 
   openSingUp() {
@@ -38,6 +47,12 @@ export class NavbarComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  logout(){
+    localStorage.removeItem('login')
+    this.location.replaceState('/', '');
+    this.router.navigate(['/'])
   }
 
 }

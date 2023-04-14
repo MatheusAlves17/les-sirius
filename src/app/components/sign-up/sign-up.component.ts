@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -45,6 +46,7 @@ export class SignUpComponent {
     private fb: FormBuilder,
     private auth: AuthenticationService,
     private router: Router,
+    private location: Location
 
   ){
 
@@ -84,9 +86,11 @@ export class SignUpComponent {
       this.signUpData.password = value.password;
     }
 
-    this.auth.signUp(this.signUpData).subscribe(result => {
+    this.auth.signUp(this.signUpData).subscribe((result: any) => {
       console.log(`Chegou: ${result}`);
-      this.router.navigate(['/profile/123'])
+      this.router.navigate([`/profile/${result.user.id}`])
+      this.location.replaceState('/', '');
+
     })
   }
 
@@ -102,8 +106,9 @@ export class SignUpComponent {
 
       await this.auth.signIn(this.signInData).subscribe((data: any) => {
         localStorage.setItem('login', JSON.stringify(data))
+        this.location.replaceState('/', '');
         console.log(`login: ${data}`);
-        this.router.navigate(['/profile/123'])
+        this.router.navigate([`/profile/${data.user.id}`])
 
       })
     }

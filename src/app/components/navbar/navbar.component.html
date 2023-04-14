@@ -19,7 +19,7 @@
       </div>
       <p class="nav-item-link">Entrar</p>
     </div>
-    <div class="nav-list-item" (click)="openSingUp()" *ngIf="isAuthenticate === true">
+    <div class="nav-list-item" *ngIf="isAuthenticate === true" mat-icon-button [matMenuTriggerFor]="menu">
       <div class="nav-icon">
         <div class="avatar-default">
           <p style="margin: 0">{{avatarDefault}}</p>
@@ -27,6 +27,11 @@
         <!-- <img src="https://pps.whatsapp.net/v/t61.24694-24/103198079_185564256145556_4098820761294741391_n.jpg?ccb=11-4&oh=01_AdQOy3eu_NMYdZNAmNLGj6imPP7PF3_IY3Ion_TmbByGHw&oe=64403AB9" alt="" class="avatar"> -->
       </div>
     </div>
+    <mat-menu #menu="matMenu">
+      <p mat-menu-item (click)="logout()">
+        <span>Sair</span>
+      </p>
+    </mat-menu>
   </div>
 </nav>
 <router-outlet></router-outlet>

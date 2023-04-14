@@ -14,9 +14,9 @@
         required
         />
       </div>
-      <div class="error" *ngIf="name.invalid && formDir.submitted">
+      <!-- <div class="error" *ngIf="name.invalid && formDir.submitted">
         <p class="message-error" *ngIf="name.errors?.['required']">O nome é obrigatório</p>
-      </div>
+      </div> -->
       <div class="input">
         <input
         formControlName="CPF"
@@ -29,9 +29,9 @@
         mask="999.999.999-99"
         />
       </div>
-      <div class="error" *ngIf="cpf.invalid && formDir.submitted">
+      <!-- <div class="error" *ngIf="cpf.invalid && formDir.submitted">
         <p class="message-error" *ngIf="cpf.errors?.['required']">O CPF é obrigatório</p>
-      </div>
+      </div> -->
       <div class="input">
         <input
         formControlName="email"
@@ -62,18 +62,18 @@
       <!-- </div> -->
       <div class="input">
         <input
-        formControlName="telphone"
+        formControlName="phone"
         placeholder="Telefone"
         type="tel"
-        name="telphone"
-        id="telphone"
+        name="phone"
+        id="phone"
         mask="(99) 99999-9999"
         required
         />
       </div>
-      <div class="error" *ngIf="telphone.invalid && formDir.submitted">
+      <!-- <div class="error" *ngIf="telphone.invalid && formDir.submitted">
         <p class="message-error" *ngIf="telphone.errors?.['required']">Número de telefone é obrigatório</p>
-      </div>
+      </div> -->
       <input type="submit" value="Cadastrar" class="button">
     </form>
   </div>

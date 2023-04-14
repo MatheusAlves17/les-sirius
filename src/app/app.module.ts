@@ -12,14 +12,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-
-import { ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { SnackSuccessComponent } from './components/snack-success/snack-success.component';
+
+
 
 @NgModule({
   declarations: [
@@ -28,19 +33,22 @@ import { ProfileComponent } from './pages/profile/profile.component';
     SignUpComponent,
     SidebarComponent,
     ProfileComponent,
+    SnackSuccessComponent,
   ],
   imports: [
     // NgxMaskModule.forRoot(),
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatDialogModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatNativeDateModule,
-    MatInputModule,
     RouterModule,
+    MatMenuModule,
+    BrowserModule,
+    MatInputModule,
+    MatDialogModule,
     HttpClientModule,
+    AppRoutingModule,
+    MatSnackBarModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
